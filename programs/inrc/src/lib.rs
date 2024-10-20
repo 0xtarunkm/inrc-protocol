@@ -28,4 +28,8 @@ pub mod inrc {
             &ctx.bumps,
         )
     }
+
+    pub fn update_config(ctx: Context<UpdateConfig>, min_health_factor: u64) -> Result<()> {
+        ctx.accounts.update_config(min_health_factor)
+    }
 }

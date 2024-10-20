@@ -9,7 +9,7 @@ pub struct InitializeConfig<'info> {
     signer: Signer<'info>,
     #[account(
         init,
-        payer = signer,
+        payer = signer, 
         seeds = [SEED_CONFIG_ACCOUNT, signer.key().as_ref()],
         bump,
         space = ANCHOR_DISCRIMINATOR + Config::INIT_SPACE,
