@@ -41,4 +41,13 @@ pub mod inrc {
         ctx.accounts
             .deposit_collateral(collateral_amount, mint_amount, &ctx.bumps)
     }
+
+    pub fn withdraw_collateral(
+        ctx: Context<WithdrawCollateral>,
+        collateral_amount: u64,
+        burn_amount: u64,
+    ) -> Result<()> {
+        ctx.accounts
+            .redeem_collateral(collateral_amount, burn_amount)
+    }
 }

@@ -80,10 +80,10 @@ impl<'info> DepositCollateral<'info> {
         if !self.treasury.is_initialized {
             self.treasury.is_initialized = true;
             self.treasury.depositor = self.depositor.key();
-            self.treasury.sol_account = self.sol_treasury.key();
-            self.treasury.token_ata = self.mint_ata.key();
+            self.treasury.sol_treasury = self.sol_treasury.key();
+            self.treasury.mint_ata = self.mint_ata.key();
             self.treasury.bump = bumps.treasury;
-            self.treasury.sol_account_bump = bumps.sol_treasury;
+            self.treasury.sol_treasury_bump = bumps.sol_treasury;
         }
 
         // check health factor
