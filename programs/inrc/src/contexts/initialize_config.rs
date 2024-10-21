@@ -9,8 +9,8 @@ pub struct InitializeConfig<'info> {
     signer: Signer<'info>,
     #[account(
         init,
-        payer = signer, 
-        seeds = [SEED_CONFIG_ACCOUNT, signer.key().as_ref()],
+        payer = signer,
+        seeds = [SEED_CONFIG_ACCOUNT],
         bump,
         space = ANCHOR_DISCRIMINATOR + Config::INIT_SPACE,
     )]
@@ -18,7 +18,7 @@ pub struct InitializeConfig<'info> {
     #[account(
         init,
         payer = signer,
-        seeds = [SEED_MINT_ACCOUNT, signer.key().as_ref()],
+        seeds = [SEED_MINT_ACCOUNT],
         bump,
         mint::decimals = MINT_DECIMAL,
         mint::authority = mint,

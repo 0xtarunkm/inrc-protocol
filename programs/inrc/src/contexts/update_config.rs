@@ -8,7 +8,7 @@ pub struct UpdateConfig<'info> {
     signer: Signer<'info>,
     #[account(
         mut,
-        seeds = [SEED_CONFIG_ACCOUNT, signer.key().as_ref()],
+        seeds = [SEED_CONFIG_ACCOUNT],
         bump = config.bump
     )]
     config: Account<'info, Config>,

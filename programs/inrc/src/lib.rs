@@ -32,4 +32,13 @@ pub mod inrc {
     pub fn update_config(ctx: Context<UpdateConfig>, min_health_factor: u64) -> Result<()> {
         ctx.accounts.update_config(min_health_factor)
     }
+
+    pub fn deposit_collateral(
+        ctx: Context<DepositCollateral>,
+        collateral_amount: u64,
+        mint_amount: u64,
+    ) -> Result<()> {
+        ctx.accounts
+            .deposit_collateral(collateral_amount, mint_amount, &ctx.bumps)
+    }
 }
