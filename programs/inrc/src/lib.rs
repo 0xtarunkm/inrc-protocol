@@ -50,4 +50,8 @@ pub mod inrc {
         ctx.accounts
             .redeem_collateral(collateral_amount, burn_amount)
     }
+
+    pub fn liquidate(ctx: Context<Liquidate>, amount_to_burn: u64) -> Result<()> {
+        ctx.accounts.liquidate(amount_to_burn)
+    }
 }
