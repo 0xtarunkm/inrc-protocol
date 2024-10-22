@@ -6,8 +6,7 @@ use pyth_solana_receiver_sdk::price_update::{get_feed_id_from_hex, PriceUpdateV2
 
 use crate::error::ErrorCode;
 use crate::{
-    Collateral, Config, MAX_AGE, PRICE_FEED_DECIMAL_ADJUSTMENT, SEED_COLLATERAL_ACCOUNT,
-    SEED_CONFIG_ACCOUNT, SEED_SOL_ACCOUNT, SOL_USD_FEED_ID,
+    Collateral, Config, MAX_AGE, PRICE_FEED_DECIMAL_ADJUSTMENT, SEED_COLLATERAL_ACCOUNT, SEED_CONFIG_ACCOUNT, SEED_SOL_ACCOUNT, SOL_USD_FEED_ID
 };
 
 #[derive(Accounts)]
@@ -43,8 +42,8 @@ pub struct WithdrawCollateral<'info> {
 
 impl<'info> WithdrawCollateral<'info> {
     pub fn redeem_collateral(&mut self, collateral_amount: u64, burn_amount: u64) -> Result<()> {
-        self.treasury.lamport_balance = self.sol_treasury.lamports() - collateral_amount;
-        self.treasury.amount_minted -= burn_amount;
+        self.treasury.lamport_balance = self.sol_treasury.lamports().checked_sub(collateral_amount).unwrap();
+        self.treasury.amount_minted.checked_sub(burn_amount).unwrap();
 
         // check health factor
         let health_factor = self.calculate_health_factor(collateral_amount)?;

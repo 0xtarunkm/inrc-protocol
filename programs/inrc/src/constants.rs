@@ -12,3 +12,7 @@ pub const ANCHOR_DISCRIMINATOR: usize = 8;
 pub const MINT_DECIMAL: u8 = 6;
 pub const MAX_AGE: u64 = 100;
 pub const PRICE_FEED_DECIMAL_ADJUSTMENT: u128 = 10;
+
+pub const LIQUIDATION_THRESHOLD: u64 = 50; 
+pub const LIQUIDATION_BONUS: u64 = 10;
+pub const MIN_HEALTH_FACTOR: u64 = 1;
